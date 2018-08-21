@@ -45,6 +45,6 @@
         </div>
     </div>
     <div class="d-flex flex-wrap flex-row justify-content-center align-items-center mt-5">
-        <app-card *ngFor="let car of deckSize"></app-card>
+        <app-card #cardVar [imgSource]="card.img" [status]="card.status" *ngFor="let card of cardCollection"></app-card>
     </div>
 </div>
