@@ -1,5 +1,32 @@
-<div class="row">
-    <div class="col text-center">
-        <h1 class="display-4 welcometext">Welcome to card-matching game!</h1>
+<nav class="navbar navbar-light navbar-dark-theme">
+    <a class="navbar-brand" href="#">
+        <img src="../../../assets/images/supercharge-logo.svg" width="30" height="30" alt="">
+        <span class="navbar-title">MEMORY GAME</span>
+    </a>
+</nav>
+
+<div class="center-center">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4 welcometext">SUPERCHARGE</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="lead">MEMORY GAME</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <p>Dock size</p>
+            <select class="form-control dock-select" [(ngModel)]="docknumber">
+              <option *ngFor="let dock of dockSize" [value]="dock">{{dock}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3">
+            <button type="button" class="btn btn-outline-danger" (click)="StartGame()">START NEW GAME</button>
+        </div>
     </div>
 </div>

@@ -1,0 +1,34 @@
+.navbar-dark-theme {
+    background-color: #282a2b!important;
+}
+
+.navbar-title {
+    color: white;
+    margin-left: 15px;
+}
+
+.dock-select {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.center-center {
+    position: absolute;
+    min-width: 400px;
+    padding: 10px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+
+/* MOBILE VIEW */
+
+@media (max-width: 500px) {
+    .center-center {
+        min-width: 250px;
+    }
+}
