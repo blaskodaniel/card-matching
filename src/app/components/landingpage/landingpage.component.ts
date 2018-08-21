@@ -7,19 +7,21 @@ import { Settings } from "../../services/settings.service";
   styleUrls: ['./landingpage.component.scss']
 })
 export class LandingpageComponent implements OnInit {
-  dockSize: number[];
-  docknumber: number;
+  deckSize: number[];
+  decknumber: number;
+  showGameBoard = false;
 
   constructor(private appSettings: Settings) {}
 
   ngOnInit() {
-    let dockMax = +this.appSettings.numberofcards_max;
-    let dockMin = +this.appSettings.numberofcards_min;
-    this.docknumber = dockMin;
-    if(dockMax > dockMin){
-      this.dockSize = this.RangeFill(dockMin,dockMax);
+    let deckMax = +this.appSettings.numberofcards_max;
+    let deckMin = +this.appSettings.numberofcards_min;
+    this.decknumber = deckMin;
+
+    if(deckMax > deckMin){
+      this.deckSize = this.RangeFill(deckMin,deckMax);
     }else{
-      this.dockSize = this.RangeFill(3,10);
+      this.deckSize = this.RangeFill(3,10);
     }
     
   }
@@ -29,6 +31,6 @@ export class LandingpageComponent implements OnInit {
   }
 
   StartGame(){
-    console.log(this.docknumber);
+    this.showGameBoard = true;
   }
 }

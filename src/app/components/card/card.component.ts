@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+  imgSource: string;
+  isFaceUp = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  Flip(){
+    this.isFaceUp = true;
   }
 
 }

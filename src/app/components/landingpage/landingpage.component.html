@@ -3,9 +3,14 @@
         <img src="../../../assets/images/supercharge-logo.svg" width="30" height="30" alt="">
         <span class="navbar-title">MEMORY GAME</span>
     </a>
+    <nav class="navbar navbar-light gameControl">
+        <span class="navbar-text">
+            Deck size: {{deckSize.length}}
+        </span>
+    </nav>
 </nav>
 
-<div class="center-center">
+<div class="center-center" *ngIf="!showGameBoard">
     <div class="row">
         <div class="col">
             <h1 class="display-4 welcometext">SUPERCHARGE</h1>
@@ -18,9 +23,9 @@
     </div>
     <div class="row mt-5">
         <div class="col">
-            <p>Dock size</p>
-            <select class="form-control dock-select" [(ngModel)]="docknumber">
-              <option *ngFor="let dock of dockSize" [value]="dock">{{dock}}</option>
+            <p>Deck size</p>
+            <select class="form-control dock-select" [(ngModel)]="decknumber">
+              <option *ngFor="let dock of deckSize" [value]="dock">{{dock}}</option>
             </select>
         </div>
     </div>
@@ -28,5 +33,18 @@
         <div class="col mt-3">
             <button type="button" class="btn btn-outline-danger" (click)="StartGame()">START NEW GAME</button>
         </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="showGameBoard">
+    <div class="d-flex justify-content-between p-4">
+        <div class="tries">Current tries: 1</div>
+        <div class="best">9</div>
+        <div class="restart">
+            <button type="button" class="btn btn-outline-secondary">Restart</button>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap flex-row justify-content-center align-items-center mt-5">
+        <app-card *ngFor="let car of deckSize"></app-card>
     </div>
 </div>

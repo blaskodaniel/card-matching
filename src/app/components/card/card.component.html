@@ -1,3 +1,4 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+<div class="card" [ngClass]="{'rounded':isEnd}" (click)="Flip()">
+    <div class="cover" *ngIf="!isEnd"></div>
+    <img class="card-img-top" [ngClass]="{'cardTry':isFaceUp}" src="../../../assets/images/cards/angular.png" alt="Card image cap">
 </div>
