@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-card',
@@ -6,20 +7,21 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input('imgSource') imgSource: string;
-  @Input('status') status: number;
+  @Input('cardObject') cardObject: Card;
+  @Output('eventClick') eventClick = new EventEmitter();
+
   isFaceUp = false;
   isEnd = false;
 
   constructor() {
-    
+
   }
 
   ngOnInit() {
   }
 
-  Flip(){
-    this.isFaceUp = true;
+  Flip() {
+    this.eventClick.emit(this.cardObject);
   }
 
 }

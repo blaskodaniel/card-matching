@@ -38,13 +38,13 @@
 
 <div class="container" *ngIf="showGameBoard">
     <div class="d-flex justify-content-between p-4">
-        <div class="tries">Current tries: 1</div>
+        <div class="tries">Current tries: {{currentTries}}</div>
         <div class="best">9</div>
         <div class="restart">
             <button type="button" class="btn btn-outline-secondary">Restart</button>
         </div>
     </div>
     <div class="d-flex flex-wrap flex-row justify-content-center align-items-center mt-5">
-        <app-card #cardVar [imgSource]="card.img" [status]="card.status" *ngFor="let card of cardCollection"></app-card>
+        <app-card #cardVar [cardObject]="card" (eventClick)="Flip($event)" *ngFor="let card of cardCollection"></app-card>
     </div>
 </div>
