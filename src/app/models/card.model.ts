@@ -1,5 +1,5 @@
-export class Card{
-    img:string;
+export class Card {
+    img: string;
     id: string;
-    status:number;
+    status: number;
 }

@@ -5,7 +5,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
   { path: 'start', component: LandingpageComponent },
-  { path: "**", component: LandingpageComponent }
+  { path: '**', component: LandingpageComponent }
 ];
 
 @NgModule({
