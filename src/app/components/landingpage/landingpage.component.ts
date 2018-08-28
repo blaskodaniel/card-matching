@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Settings } from "../../services/settings.service";
+import { Settings } from '../../services/settings.service';
 import { CardComponent } from '../card/card.component';
 import { Card } from '../../models/card.model';
 import { RandomImg } from '../../models/randomImg.model';
@@ -22,15 +22,14 @@ export class LandingpageComponent implements OnInit {
   faceUpCardNumber = 0;
   isFaceUp = false;
   cardPair: Card[] = [];
-  @ViewChild('cardVar') cardVar: ElementRef<CardComponent>;
 
   constructor(private appSettings: Settings, private router: Router) {
 
   }
 
   ngOnInit() {
-    let deckMax = +this.appSettings.numberofcards_max;
-    let deckMin = +this.appSettings.numberofcards_min;
+    const deckMax = +this.appSettings.numberofcards_max;
+    const deckMin = +this.appSettings.numberofcards_min;
     this.decknumber = deckMin;
 
     if (deckMax > deckMin) {
@@ -45,29 +44,28 @@ export class LandingpageComponent implements OnInit {
     return (new Array(end - start + 1)).fill(undefined).map((_, i) => i + start);
   }
 
-  ShakeCards(){
-    for (var i = this.cardCollection.length-1; i >=0; i--) {
-        var randomIndex = Math.floor(Math.random()*(i+1)); 
-        var itemAtIndex = this.cardCollection[randomIndex]; 
-         
-        this.cardCollection[randomIndex] = this.cardCollection[i]; 
-        this.cardCollection[i] = itemAtIndex;
+  ShakeCards() {
+    for (let i = this.cardCollection.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      const itemAtIndex = this.cardCollection[randomIndex];
+      this.cardCollection[randomIndex] = this.cardCollection[i];
+      this.cardCollection[i] = itemAtIndex;
     }
   }
 
   RandomImg(): RandomImg {
     let isSame = true;
-    let randomimage = "";
+    let randomimage = '';
     while (isSame) {
       randomimage = this.appSettings.images[Math.floor(Math.random() * this.appSettings.images.length)];
       const isExistImgColl = this.generateImgCollection.filter(x => {
         if (x === randomimage) { return x; }
       });
       if (isExistImgColl.length === 0) {
-        this.generateImgCollection.push(randomimage); isSame = false 
+        this.generateImgCollection.push(randomimage); isSame = false;
       }
     }
-    let imageUrl = `../../../assets/images/cards/${randomimage}.png`;
+    const imageUrl = `../../../assets/images/cards/${randomimage}.png`;
     const resultRnd = {
       imageUrl: imageUrl,
       id: randomimage
@@ -80,16 +78,16 @@ export class LandingpageComponent implements OnInit {
     this.generateImgCollection = [];
     this.deckNgFor.forEach(() => {
       const generateIMG = this.RandomImg();
-      let card = {
-        img: generateIMG["imageUrl"],
-        id: generateIMG["id"],
+      const card = {
+        img: generateIMG['imageUrl'],
+        id: generateIMG['id'],
         status: 0
-      }
-      let card2 = {
-        img: generateIMG["imageUrl"],
-        id: generateIMG["id"],
+      };
+      const card2 = {
+        img: generateIMG['imageUrl'],
+        id: generateIMG['id'],
         status: 0
-      }
+      };
       this.cardCollection.push(card);
       this.cardCollection.push(card2);
     });
@@ -113,17 +111,17 @@ export class LandingpageComponent implements OnInit {
   }
 
   Evaluate() {
-    if (this.cardPair.length == 2) {
+    if (this.cardPair.length === 2) {
       if (this.cardPair[0].id === this.cardPair[1].id) {
         this.cardPair[0].status = 2;
         this.cardPair[1].status = 2;
-        const isFinishGame = this.cardCollection.every(x=>x.status == 2);
-        if(isFinishGame){
-          alert("Játék vége! Gratulálok! Szép volt");
+        const isFinishGame = this.cardCollection.every(x => x.status === 2);
+        if (isFinishGame) {
+          alert('Játék vége! Gratulálok! Szép volt');
           this.router.navigate(['/start']);
         }
       } else {
-        console.log("Nem egyformák");
+        console.log('Nem egyformák');
       }
       this.cardPair = [];
       this.AllFlipOff();
@@ -134,12 +132,12 @@ export class LandingpageComponent implements OnInit {
   AllFlipOff() {
     setTimeout(() => {
       this.cardCollection.forEach((x) => {
-        if (x.status == 1) {
+        if (x.status === 1) {
           x.status = 0;
         }
       });
       this.faceUpCardNumber = 0;
-    }, 1000)
+    }, 1000);
   }
 
 }

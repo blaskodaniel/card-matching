@@ -6,5 +6,5 @@ import { Injectable } from '@angular/core';
 export class Settings {
   numberofcards_max = 10;
   numberofcards_min = 3;
-  images = ["webpack","ts","sass","supercharge","redux","react","d3","angular","jenkins","postcss"];
+  images = ['webpack', 'ts', 'sass', 'supercharge', 'redux', 'react', 'd3', 'angular', 'jenkins', 'postcss'];
 }
