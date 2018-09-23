@@ -41,12 +41,12 @@
         <div class="tries">Current tries: {{currentTries}}</div>
         <div class="best">9</div>
         <div class="restart">
-            <button type="button" class="btn btn-outline-secondary">Restart</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="Restart()">Restart</button>
         </div>
     </div>
-    <div class="d-flex flex-wrap flex-row justify-content-center align-items-center mt-5">
-        <div *ngFor="let i = index; let card of cardCollection">
-            <app-card [cardObject]="card" (eventClick)="Flip($event)"></app-card>
+    <div class="cardContainer">
+        <div *ngFor="let y = index; let box of rowNumber" class="cardRow d-flex justify-content-center">
+            <app-card *ngFor="let card of cardCollection.slice((y*5),(5+(y*5)))" [cardObject]="card" (eventClick)="Flip($event)"></app-card>
         </div>
     </div>
 </div>

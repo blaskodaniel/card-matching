@@ -22,6 +22,7 @@ export class LandingpageComponent implements OnInit {
   faceUpCardNumber = 0;
   isFaceUp = false;
   cardPair: Card[] = [];
+  rowNumber: number[];
 
   constructor(private appSettings: Settings, private router: Router) {
 
@@ -92,6 +93,7 @@ export class LandingpageComponent implements OnInit {
       this.cardCollection.push(card2);
     });
     this.ShakeCards();
+    this.rowNumber = this.RangeFill(0,Math.round(this.cardCollection.length / 5));
     this.showGameBoard = true;
   }
 
@@ -138,6 +140,11 @@ export class LandingpageComponent implements OnInit {
       });
       this.faceUpCardNumber = 0;
     }, 1000);
+  }
+
+  Restart(){
+    this.showGameBoard = false;
+    this.cardCollection = [];
   }
 
 }
